@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:usg:schema:entitlement-token:1.0",
+  "title": "USG Entitlement Token Response",
+  "description": "Schema for the response returned by the USG /entitlements/issue endpoint.",
+  "type": "object",
+  "properties": {
+    "entitlement_token": {
+      "type": "string",
+      "description": "Opaque token string (e.g., JWT or similar) representing a time-limited entitlement.",
+      "examples": ["eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."]
+    },
+    "expires": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC expiration time for the entitlement.",
+      "examples": ["2025-04-10T23:59:00Z"]
+    },
+    "event_id": {
+      "type": "string",
+      "description": "Optional echo of the event identifier associated with this entitlement.",
+      "examples": ["nba_2025_gsw_lal_0410"]
+    },
+    "scope": {
+      "type": "array",
+      "description": "Optional list of scopes attached to this entitlement.",
+      "items": {
+        "type": "string",
+        "examples": ["view", "replay", "analytics"]
+      }
+    }
+  },
+  "required": ["entitlement_token", "expires"],
+  "additionalProperties": false
+}

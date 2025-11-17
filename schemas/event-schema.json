@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:usg:schema:event:1.0",
+  "title": "USG Event Schema",
+  "description": "Minimal schema for a single sports event within the Universal Sports Graph.",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Canonical event identifier (league_season_home_away_date).",
+      "examples": ["nba_2025_gsw_lal_0410"]
+    },
+    "league": {
+      "type": "string",
+      "description": "League or competition identifier.",
+      "examples": ["NBA", "MLS", "UEFA_CL"]
+    },
+    "home": {
+      "type": "string",
+      "description": "Home team name or code.",
+      "examples": ["Warriors"]
+    },
+    "away": {
+      "type": "string",
+      "description": "Away team name or code.",
+      "examples": ["Lakers"]
+    },
+    "start_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Scheduled start time in UTC (ISO 8601).",
+      "examples": ["2025-04-10T19:30:00Z"]
+    },
+    "territory": {
+      "type": "array",
+      "description": "List of allowed territories (ISO 3166-1 alpha-2 country codes).",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{2}$"
+      },
+      "minItems": 1,
+      "examples": [["US", "CA"]]
+    },
+    "blackout": {
+      "type": "array",
+      "description": "Optional list of blackout territories (ISO country codes).",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{2}$"
+      }
+    },
+    "rights_holder": {
+      "type": "string",
+      "description": "Entity that holds primary broadcast rights.",
+      "examples": ["NBA Media"]
+    },
+    "delivery_partner": {
+      "type": "string",
+      "description": "Platform or network that hosts the stream.",
+      "examples": ["YouTubeTV"]
+    },
+    "price_usd": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Illustrative per-event price in USD for day-pass access.",
+      "examples": [4.99]
+    },
+    "access_window": {
+      "type": "object",
+      "description": "Time window during which access tokens are valid.",
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Window start time in UTC.",
+          "examples": ["2025-04-10T19:00:00Z"]
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Window end time in UTC.",
+          "examples": ["2025-04-10T23:59:00Z"]
+        }
+      },
+      "required": ["start", "end"]
+    },
+    "settlement_split": {
+      "type": "object",
+      "description": "Revenue allocation across platform, rights-holder, and clearinghouse (percentages).",
+      "properties": {
+        "platform": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "rights": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "clearinghouse": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "required": ["platform", "rights", "clearinghouse"]
+    },
+    "privacy_ref": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL pointing to the applicable privacy policy.",
+      "examples": ["https://example-league.com/privacy"]
+    },
+    "consent_scope": {
+      "type": "array",
+      "description": "Optional list of consent scopes associated with this entitlement.",
+      "items": {
+        "type": "string",
+        "examples": ["analytics", "marketing"]
+      }
+    }
+  },
+  "required": [
+    "event_id",
+    "league",
+    "home",
+    "away",
+    "start_time",
+    "territory",
+    "rights_holder",
+    "delivery_partner",
+    "price_usd",
+    "access_window",
+    "settlement_split"
+  ],
+  "additionalProperties": false
+}

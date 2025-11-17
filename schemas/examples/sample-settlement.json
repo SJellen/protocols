@@ -1,0 +1,12 @@
+{
+  "txn_id": "txn_5567",
+  "event_id": "nba_2025_gsw_lal_0410",
+  "amount_usd": 4.99,
+  "split": {
+    "platform": 1.996,
+    "rights": 1.996,
+    "clearinghouse": 0.998
+  },
+  "timestamp": "2025-04-10T19:31:00Z",
+  "ledger_hash": "0000abcd..."
+}

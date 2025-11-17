@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:usg:schema:settlement-record:1.0",
+  "title": "USG Settlement Record",
+  "description": "Schema for a single settlement record logged by the USG clearinghouse.",
+  "type": "object",
+  "properties": {
+    "txn_id": {
+      "type": "string",
+      "description": "Unique transaction identifier within the clearinghouse.",
+      "examples": ["txn_5567"]
+    },
+    "event_id": {
+      "type": "string",
+      "description": "Identifier of the event associated with this transaction.",
+      "examples": ["nba_2025_gsw_lal_0410"]
+    },
+    "amount_usd": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Total settlement amount in USD for this transaction.",
+      "examples": [4.99]
+    },
+    "split": {
+      "type": "object",
+      "description": "Monetary allocation across stakeholders, expressed in USD.",
+      "properties": {
+        "platform": {
+          "type": "number",
+          "minimum": 0,
+          "examples": [1.996]
+        },
+        "rights": {
+          "type": "number",
+          "minimum": 0,
+          "examples": [1.996]
+        },
+        "clearinghouse": {
+          "type": "number",
+          "minimum": 0,
+          "examples": [0.998]
+        }
+      },
+      "required": ["platform", "rights", "clearinghouse"]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC timestamp for when the settlement was recorded.",
+      "examples": ["2025-04-10T19:31:00Z"]
+    },
+    "ledger_hash": {
+      "type": "string",
+      "description": "Opaque hash representing this entry in the append-only ledger.",
+      "examples": ["0000abcd..."]
+    }
+  },
+  "required": ["txn_id", "event_id", "amount_usd", "split", "timestamp", "ledger_hash"],
+  "additionalProperties": false
+}

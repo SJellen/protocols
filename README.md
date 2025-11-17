@@ -1,66 +1,67 @@
 # Protocols by Scott Jellen  
 ### RFC Series · Digital Public Infrastructure · Interoperability Standards  
 
-This repository contains the source files, RFCs, schemas, and reference materials  
-for my protocol and digital-public-infrastructure work.
+This repository serves as the canonical source for my protocol work, RFC documents,  
+schemas, and reference artifacts. It functions as a public, versioned archive for  
+frameworks that define interoperable, humanity-first digital infrastructure.
 
 The goal:  
-**Define interoperable, humanity-first standards for rights, access, media, and institutional architecture.**
+**Author standards that make complex systems—sports, media, education, commerce—interoperable, portable, and governable.**
 
-All whitepapers are DOI-backed and published via Zenodo.  
-All RFCs are maintained in plain-text markdown for transparency and versioning.
+All whitepapers are DOI-backed via Zenodo.  
+All RFCs are maintained in plain-text Markdown for transparency, citation stability, and long-term accessibility.
 
 ---
 
 ## 📡 RFC Series
 
 ### **RFC 0001 — The Universal Sports Graph**  
-*A protocol for rights, reach, and real-time access.*  
-Defines a machine-readable rights registry, universal Access API, and clearinghouse settlement layer.
+*A protocol for rights, reach, and real-time access.*
 
-- **DOI:** https://doi.org/10.5281/zenodo.17537287  
-- **Markdown:** [/rfc/rfc-0001-universal-sports-graph.md](./rfc/rfc-0001-universal-sports-graph.md)
+Defines a machine-readable rights registry, a universal Access API, and a neutral clearinghouse for settlement and auditability.
 
-More RFCs will be published here as the series expands.
+- **DOI (Whitepaper):** https://doi.org/10.5281/zenodo.17537287  
+- **RFC Markdown:** [`/rfc/rfc-0001-universal-sports-graph.md`](./rfc/rfc-0001-universal-sports-graph.md)
 
----
-
-## 📘 Whitepapers (Markdown Sources)
-
-Markdown source files for my published whitepapers.
-
-PDFs (with DOIs) are available on Zenodo:  
-https://zenodo.org/search?q=Scott%20Jellen
-
-Markdown sources will be added here in `/whitepapers/` as they are converted.
+Additional RFCs will be added as formal protocol designs evolve.
 
 ---
 
-## 🧪 Schemas & Reference Implementations
+## 📘 Whitepapers (Source Markdown)
 
-Standardized schemas and example payloads for RFC implementations.
+Markdown source files corresponding to published whitepapers are stored in `/whitepapers/`.  
+All canonical PDF versions (with DOIs) are available on Zenodo:
 
-- Event Schema  
-- Entitlement Token  
-- Settlement Record  
+🔗 https://zenodo.org/search?q=Scott%20Jellen
 
-See the `/schemas/` directory:  
-[/schemas](./schemas)
+This repo holds the **source layer**—the editable, version-controlled foundation for each paper.
 
 ---
 
-## 📊 Diagrams & Architecture Visuals
+## 🧪 Schemas & Reference Specifications
 
-Blueprint diagrams for RFCs and whitepapers.  
+Schemas define the interface contracts for RFC implementations.  
+All schemas use **URN identifiers** for long-term stability and independence from hosting or domains.
+
 Includes:
 
-- Sports Graph Stack  
-- Governance Map  
-- Compliance / Audit Stack  
-- Pilot Flow Diagrams  
+- **Event Schema** (`urn:usg:schema:event:1.0`)  
+- **Entitlement Token Schema** (`urn:usg:schema:entitlement-token:1.0`)  
+- **Settlement Record Schema** (`urn:usg:schema:settlement-record:1.0`)  
+
+See the schema registry:  
+[`/schemas`](./schemas)
+
+---
+
+## 📊 Architectural Diagrams
+
+Blueprint diagrams and structural visuals used across RFCs and whitepapers.  
+These represent protocol architecture, governance models, audit stacks, and flow sequences.
 
 Located in:  
-[/diagrams](./diagrams)
+[`/diagrams`](./diagrams)
+
 
 ---
 
@@ -77,6 +78,7 @@ protocols/
 ├── LICENSE.md # CC BY-NC 4.0 license
 └── README.md # This file
 ```
+
 ---
 
 ## 🔗 External Links
@@ -90,6 +92,6 @@ protocols/
 
 ## 📬 Contact  
 **scottjellendev@gmail.com**  
-Open to collaboration on DPI, protocol design, sports architecture, and standards development.
+Open to collaboration on digital public infrastructure, protocol design, and standards architecture.
 
 ---
