@@ -115,7 +115,6 @@ Example schemas and sample JSON are provided for illustrative and non-commercial
 For commercial or production use, please contact the author.
 
 
-
 ---
 
 ## 🛠 Contributions
