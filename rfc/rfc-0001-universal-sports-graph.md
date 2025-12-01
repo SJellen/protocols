@@ -1,13 +1,15 @@
 # RFC 0001 — The Universal Sports Graph  
-### A Protocol for Rights, Reach, and Real-Time Access  
+*A Specification for Rights, Reach, and Real-Time Access*
 
-**Category:** Informational  
-**Series Identifier:** USG-RFC (ISSN Pending)  
+**Document Series:** USG-RFC  
+**Series Number:** 0001  
 **DOI:** 10.5281/zenodo.17565794  
-**Relation:** isSupplementTo 10.5281/zenodo.17537287  
+**Updated By:** RFC 0002  
 **Author:** Scott Jellen (Independent Researcher)  
-**Date:** November 2025  
-**License:** CC BY-NC-SA 4.0  
+**Date:** 2025  
+**License:** CC BY-NC 4.0  
+**Status:** Standards-Track (Informational)
+
 
 
 ---
@@ -285,5 +287,13 @@ The author thanks the open-standards and digital-public-infrastructure communiti
 Feedback and implementation reports may be submitted via [scottjellen.com](https://scottjellen.com) or the Zenodo discussion thread for DOI 10.5281/zenodo.17537287.
 
 ---
+
+## Revision History
+**v1.1 — December 2025**  
+- Updated cross-references to RFC 0002  
+- Removed placeholder ISSN field  
+- Updated header metadata to USG-RFC standard  
+- Minor terminology alignment with entitlement profile
+___
 
 **End of RFC 0001**

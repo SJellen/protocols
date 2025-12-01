@@ -1,15 +1,16 @@
-# RFC 0002 — USG Entitlement Token Profile
-A Standards-Track Specification for Tokenized Sports Access
+# RFC 0002 — USG Entitlement Token Profile  
+*A Standards-Track Specification for Tokenized Sports Access*
 
-**Category:** Standards-Track (Experimental)  
-**Series Identifier:** USG-RFC (ISSN Pending)  
-**DOI:** 10.5281/zenodo.17781620  
+**Document Series:** USG-RFC  
+**Series Number:** 0002  
+**DOI:** 10.5281/zenodo.xxxxxx  
 **Updates:** RFC 0001  
 **Relation:** isSupplementTo 10.5281/zenodo.17565794  
 **Author:** Scott Jellen (Independent Researcher)  
 **Date:** December 2025  
-**License:** CC BY-NC-SA 4.0  
+**License:** CC BY-NC 4.0  
 **Status:** Draft for Review and Implementation Feedback
+
 
 ---
 
@@ -1289,5 +1290,22 @@ These documents provide supporting context but are **not required** for implemen
   Berners-Lee, T., Fielding, R., Masinter, L. (IETF, 2005)
 
 
+## Revision History
+
+**v1.1 — December 2025**  
+- Removed placeholder ISSN from document metadata.  
+- Updated header to adopt the unified USG-RFC series format.  
+- Aligned top matter with RFC 0001 revisions for consistency.  
+- No technical or normative changes were made to the specification.
+
+**v1.0 — December 2025**  
+- Initial publication of RFC 0002 (USG Entitlement Token Profile).  
+- Introduced the normative token schema for authorization within the USG ecosystem.  
+- Defined required and optional claims for entitlement tokens.  
+- Established issuer and verifier rules for signature handling, key lifecycle management, and replay protection.  
+- Formalized enforcement rules for territory, window, audience, and scope.  
+- Added canonical error codes, failure modes, and prioritization guidance.  
+- Included full reference verifier pipeline, pseudocode, and validation state machine.  
+- Added provisional namespace definitions (URNs) for token and schema identifiers.
 
 **End of RFC 0002**
