@@ -2,12 +2,12 @@
 ### A Protocol for Rights, Reach, and Real-Time Access  
 
 **Category:** Informational  
-**ISSN:** 2070-1721  
+**Series Identifier:** USG-RFC (ISSN Pending)  
 **DOI:** 10.5281/zenodo.17565794  
 **Relation:** isSupplementTo 10.5281/zenodo.17537287  
 **Author:** Scott Jellen (Independent Researcher)  
 **Date:** November 2025  
-**License:** CC BY-NC 4.0  
+**License:** CC BY-NC-SA 4.0  
 
 
 ---
