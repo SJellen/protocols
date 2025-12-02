@@ -25,17 +25,32 @@ All RFCs are maintained in plain-text Markdown for transparency, citation stabil
 
 ### RFC Index
 
-| Number     | Title                     | Category       | Status |
-|------------|---------------------------|----------------|--------|
-| RFC 0001   | Universal Sports Graph    | Informational  | Active |
+| Number     | Title                                | Category                       | Status |
+|------------|----------------------------------------|-------------------------------|--------|
+| RFC 0001   | Universal Sports Graph                 | Informational                 | Active |
+| RFC 0002   | USG Entitlement Token Profile          | Standards-Track (Experimental) | Draft  |
 
-### **RFC 0001 — The Universal Sports Graph**  
+---
+
+### **RFC 0001 — The Universal Sports Graph**
 *A protocol for rights, reach, and real-time access.*
 
 Defines a machine-readable rights registry, a universal Access API, and a neutral clearinghouse for settlement and auditability.
 
-- **DOI (Whitepaper):** https://doi.org/10.5281/zenodo.17537287  
+- **DOI (Whitepaper):** https://doi.org/10.5281/zenodo.17537287
 - **RFC Markdown:** [`/rfc/rfc-0001-universal-sports-graph.md`](./rfc/rfc-0001-universal-sports-graph.md)
+
+---
+
+### **RFC 0002 — USG Entitlement Token Profile**
+*A standards-track specification for tokenized sports access.*
+
+Defines the token structure, required and optional claims, validation rules, security properties, and interoperability expectations for entitlement tokens within the USG ecosystem. Updates RFC 0001 by specifying the authorization layer necessary for interoperable access.
+
+- **DOI:** https://doi.org/10.5281/zenodo.17781620
+- **RFC Markdown:** [`/rfc/rfc-0002-usg-entitlement-token-profile.md`](./rfc/rfc-0002-usg-entitlement-token-profile.md)
+
+---
 
 Additional RFCs will be published as formal protocol designs evolve.
 
