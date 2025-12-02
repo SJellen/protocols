@@ -48,7 +48,7 @@ Defines a machine-readable rights registry, a universal Access API, and a neutra
 Defines the token structure, required and optional claims, validation rules, security properties, and interoperability expectations for entitlement tokens within the USG ecosystem. Updates RFC 0001 by specifying the authorization layer necessary for interoperable access.
 
 - **DOI:** https://doi.org/10.5281/zenodo.17781620
-- **RFC Markdown:** [`/rfc/rfc-0002-usg-entitlement-token-profile.md`](./rfc/rfc-0002-usg-entitlement-token-profile.md)
+- **RFC Markdown:** [`/rfc/rfc-0002-usg-entitlement-token.md`](./rfc/rfc-0002-usg-entitlement-token.md)
 
 ---
 
