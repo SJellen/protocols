@@ -3,7 +3,7 @@
 
 **Document Series:** USG-RFC  
 **Series Number:** 0001  
-**DOI:** 10.5281/zenodo.17565794  
+**DOI:** 10.5281/zenodo.17807503
 **Updated By:** RFC 0002  
 **Author:** Scott Jellen (Independent Researcher)  
 **Date:** 2025  
