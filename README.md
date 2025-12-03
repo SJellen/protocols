@@ -37,7 +37,7 @@ All RFCs are maintained in plain-text Markdown for transparency, citation stabil
 
 Defines a machine-readable rights registry, a universal Access API, and a neutral clearinghouse for settlement and auditability.
 
-- **DOI (Whitepaper):** https://doi.org/10.5281/zenodo.17537287
+- **DOI (Whitepaper):** https://doi.org/10.5281/zenodo.17807503
 - **RFC Markdown:** [`/rfc/rfc-0001-universal-sports-graph.md`](./rfc/rfc-0001-universal-sports-graph.md)
 
 ---
@@ -47,7 +47,7 @@ Defines a machine-readable rights registry, a universal Access API, and a neutra
 
 Defines the token structure, required and optional claims, validation rules, security properties, and interoperability expectations for entitlement tokens within the USG ecosystem. Updates RFC 0001 by specifying the authorization layer necessary for interoperable access.
 
-- **DOI:** https://doi.org/10.5281/zenodo.17781620
+- **DOI:** https://doi.org/10.5281/zenodo.17807795
 - **RFC Markdown:** [`/rfc/rfc-0002-usg-entitlement-token.md`](./rfc/rfc-0002-usg-entitlement-token.md)
 
 ---
@@ -144,7 +144,7 @@ Issues, questions, and feedback are welcome.
 
 - **Portfolio:** https://www.scottjellen.com  
 - **LinkedIn:** https://www.linkedin.com/in/scottjellen  
-- **Zenodo (DOIs):** https://zenodo.org/search?q=Scott%20Jellen  
+- **Zenodo (DOIs):** https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Jellen%2C%20Scott%22&l=list&p=1&s=10&sort=bestmatch
 - **Google Scholar:** *(will appear after indexing)*
 
 ---
