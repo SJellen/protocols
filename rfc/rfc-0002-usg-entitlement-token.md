@@ -8,7 +8,7 @@
 **Relation:** isSupplementTo 10.5281/zenodo.17565794  
 **Author:** Scott Jellen (Independent Researcher)  
 **Date:** December 2025  
-**License:** CC BY-NC 4.0  
+**License:** CC BY-NC-SA 4.0
 **Status:** Draft for Review and Implementation Feedback
 
 

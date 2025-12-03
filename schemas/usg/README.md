@@ -95,8 +95,14 @@ A URN is a **name**, not a network location — ideal for protocol-grade specifi
 
 ## 📜 License
 
-Schemas and examples are released under **CC BY-NC 4.0**, consistent with all USG
-protocol materials (Blueprint, RFC Series, Briefs, and Diagrams).
+All schemas, examples, and protocol materials in this repository — including the 
+USG Blueprint, RFC Series, Briefs, Diagrams, and accompanying documentation — 
+are released under the **Creative Commons Attribution–NonCommercial–ShareAlike 
+4.0 International (CC BY-NC-SA 4.0)** license.
 
+This ensures that the Universal Sports Graph (USG) and its related specifications 
+remain openly available for non-commercial use, research, adaptation, and 
+interoperability work, while requiring derivative versions to be shared under 
+the same license to preserve the integrity of the public-good standard.
 
 

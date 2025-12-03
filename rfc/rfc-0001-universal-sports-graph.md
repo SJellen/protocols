@@ -7,7 +7,7 @@
 **Updated By:** RFC 0002  
 **Author:** Scott Jellen (Independent Researcher)  
 **Date:** 2025  
-**License:** CC BY-NC 4.0  
+**License:** CC BY-NC-SA 4.0  
 **Status:** Standards-Track (Informational)
 
 
