@@ -25,30 +25,43 @@ All RFCs are maintained in plain-text Markdown for transparency, citation stabil
 
 ### RFC Index
 
-| Number     | Title                                | Category                       | Status |
-|------------|----------------------------------------|-------------------------------|--------|
-| RFC 0001   | Universal Sports Graph                 | Informational                 | Active |
-| RFC 0002   | USG Entitlement Token Profile          | Standards-Track (Experimental) | Draft  |
+| Number          | Title                        | Category                       | Status |
+|-----------------|------------------------------|--------------------------------|--------|
+| RFC 0001        | Universal Sports Graph       | Informational                  | Active |
+| RFC 0002        | USG Entitlement Token Profile | Standards-Track (Experimental) | Active |
+| Registry v0.1.0 | USG Reference Registry       | Reference Artifact             | Active |
 
 ---
 
-### **RFC 0001 — The Universal Sports Graph**
+### **RFC 0001 — The Universal Sports Graph**  
 *A protocol for rights, reach, and real-time access.*
 
 Defines a machine-readable rights registry, a universal Access API, and a neutral clearinghouse for settlement and auditability.
 
-- **DOI (Whitepaper):** https://doi.org/10.5281/zenodo.17807503
+- **DOI (All Versions):** https://doi.org/10.5281/zenodo.17565793  
 - **RFC Markdown:** [`/rfc/rfc-0001-universal-sports-graph.md`](./rfc/rfc-0001-universal-sports-graph.md)
 
 ---
 
-### **RFC 0002 — USG Entitlement Token Profile**
+### **RFC 0002 — USG Entitlement Token Profile**  
 *A standards-track specification for tokenized sports access.*
 
 Defines the token structure, required and optional claims, validation rules, security properties, and interoperability expectations for entitlement tokens within the USG ecosystem. Updates RFC 0001 by specifying the authorization layer necessary for interoperable access.
 
-- **DOI:** https://doi.org/10.5281/zenodo.17807795
+- **DOI (All Versions):** https://doi.org/10.5281/zenodo.17781619  
 - **RFC Markdown:** [`/rfc/rfc-0002-usg-entitlement-token.md`](./rfc/rfc-0002-usg-entitlement-token.md)
+
+---
+
+### **USG Reference Registry (v0.1.0)**  
+*A canonical JSON registry illustrating leagues, teams, venues, broadcasters, rights bundles, and events.*
+
+The registry defines the authoritative identifiers and metadata that USG-compatible systems MUST resolve when validating entitlements and generating settlement records.
+
+- **Registry Path:** [`/registry`](./registry)  
+- **Version:** `0.1.0`  
+- **Status:** Pilot (reference implementation)  
+- **Aligns With:** RFC 0001 (Rights Registry Layer), RFC 0002 (Entitlement Token Profile)
 
 ---
 
@@ -102,6 +115,8 @@ Schema versions follow **semantic versioning**:
 
 URNs follow the pattern:
 
+
+
 ```` urn:usg:schema:<name>:<version> ````
 
 ---
@@ -116,9 +131,11 @@ protocols/
 ├── schemas/ # JSON schemas + sample payloads
 ├── diagrams/ # SVG/PNG architecture diagrams
 ├── public-assets/ # Covers, metadata blocks, shared visuals
+├── registry/ # USG Reference Registry v0.1.0
 ├── LICENSE.md # CC BY-NC 4.0 license
 └── README.md # This file
 ```
+
 
 ---
 
@@ -128,7 +145,6 @@ Textual content (RFCs, whitepapers, briefs) is licensed under **CC BY-NC 4.0**.
 
 Example schemas and sample JSON are provided for illustrative and non-commercial research use.  
 For commercial or production use, please contact the author.
-
 
 ---
 
@@ -144,7 +160,8 @@ Issues, questions, and feedback are welcome.
 
 - **Portfolio:** https://www.scottjellen.com  
 - **LinkedIn:** https://www.linkedin.com/in/scottjellen  
-- **Zenodo (DOIs):** https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Jellen%2C%20Scott%22&l=list&p=1&s=10&sort=bestmatch
+- **Zenodo (DOIs):**  
+  https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Jellen%2C%20Scott%22  
 - **Google Scholar:** *(will appear after indexing)*
 
 ---
@@ -155,4 +172,5 @@ Issues, questions, and feedback are welcome.
 Open to collaboration on digital public infrastructure, protocol design, and standards architecture.
 
 ---
+
 

@@ -3,13 +3,16 @@
 
 **Document Series:** USG-RFC  
 **Series Number:** 0002  
-**DOI:** 10.5281/zenodo.17807795  
+**DOI:** 10.5281/zenodo.17781619 
 **Updates:** RFC 0001  
-**Relation:** isSupplementTo 10.5281/zenodo.17565794  
+**Relation:** isSupplementTo 10.5281/zenodo.17565793  
 **Author:** Scott Jellen (Independent Researcher)  
 **Date:** December 2025  
-**License:** CC BY-NC-SA 4.0
-**Status:** Draft for Review and Implementation Feedback
+**License:** CC BY-NC-SA 4.0  
+**Status:** Standards-Track (Draft for Review and Implementation Feedback)
+
+<div style="page-break-after: always;"></div>
+
 
 
 ---
@@ -41,6 +44,12 @@ This specification defines:
 - security and privacy considerations  
 
 RFC 0002 forms the normative foundation for USG access-control operations.
+
+This profile relies on an authoritative event definition stored in a USG-compliant
+registry. Implementers may use the USG Reference Registry v0.1.0 published at
+https://github.com/sjellen/protocols/registry as an illustrative source of event
+records and identifiers.
+
 
 ---
 
@@ -262,6 +271,8 @@ The following are NOT permitted:
 
 This section defines normative requirements for issuing and validating USG Entitlement Tokens.
 
+
+
 ### 7.1 Signing Requirements (Issuers)
 
 Issuers MUST:
@@ -314,6 +325,18 @@ Verifiers MUST:
 
    - Confirm that `event_id` corresponds to a valid entry in the Rights Registry.
    - Reject tokens whose events are not found or have been withdrawn (`error_event_invalid`).
+
+   4.1 **Registry-Based Constraint Enforcement**
+
+      Verifiers MUST resolve the token’s `event_id` against an authoritative USG Registry and MUST validate the event’s declared attributes against the registry record.
+
+      Specifically, verifiers MUST ensure:
+
+      * The current time falls within the event’s `access_window`.
+      * The user’s effective region is permitted by the registry-defined `territory` list.
+      * The distributor or platform enforcing access is consistent with `delivery_partner` or equivalent constraints in the registry entry.
+
+      Verifiers MUST reject tokens that exceed any registry-defined constraint, including territory, window, delivery, or withdrawn status (`error_event_constraint_violation`).
 
 5. **Scope Enforcement**
 
@@ -997,7 +1020,6 @@ def validate_usg_token(token, verifier_id, user_region, registry, key_registry, 
 This appendix defines a complete reference pipeline for token validation, along with an abstract state machine and extended pseudocode for implementers.  
 It is non-normative but RECOMMENDED for production deployments.
 
----
 
 ### B.1 Validation Pipeline Overview
 
@@ -1264,6 +1286,29 @@ This ensures both implementer clarity and reduced exploit surface.
 
 ---
 
+
+## Appendix C — USG Reference Registry
+
+The USG Reference Registry v0.1.0 is published at:
+https://github.com/sjellen/protocols/registry
+
+It provides canonical JSON records for events, leagues, teams, venues, broadcasters,
+and rights bundles. These records define the authoritative structure and semantics
+that entitlement tokens MUST reference during issuance and verification.
+
+Implementers MAY use the reference registry for:
+
+- event resolution (validating `event_id`)
+- verifying access windows and territory constraints
+- sandbox testing and example data
+- SDK and API development
+
+This appendix is informative. The registry itself is illustrative but normative in
+structure for all USG-compliant deployments.
+
+---
+
+
 ## 14. References
 
 ### 14.1 Normative References
@@ -1280,7 +1325,7 @@ These documents are REQUIRED to implement or reason about this specification.
   Bradner, S. (IETF, 1997)
 
 - **RFC 0001 — The Universal Sports Graph**  
-  Jellen, S. (2025). DOI: 10.5281/zenodo.17565794
+  Jellen, S. (2025). DOI: 10.5281/zenodo.17565793
 
 ### 14.2 Informative References
 
@@ -1292,12 +1337,6 @@ These documents provide supporting context but are **not required** for implemen
 
 ## Revision History
 
-**v1.1 — December 2025**  
-- Removed placeholder ISSN from document metadata.  
-- Updated header to adopt the unified USG-RFC series format.  
-- Aligned top matter with RFC 0001 revisions for consistency.  
-- No technical or normative changes were made to the specification.
-
 **v1.0 — December 2025**  
 - Initial publication of RFC 0002 (USG Entitlement Token Profile).  
 - Introduced the normative token schema for authorization within the USG ecosystem.  
@@ -1307,5 +1346,17 @@ These documents provide supporting context but are **not required** for implemen
 - Added canonical error codes, failure modes, and prioritization guidance.  
 - Included full reference verifier pipeline, pseudocode, and validation state machine.  
 - Added provisional namespace definitions (URNs) for token and schema identifiers.
+
+**v1.1 — December 2025**  
+- Removed placeholder ISSN from document metadata.  
+- Updated header to adopt the unified USG-RFC series format.  
+- Aligned top matter with RFC 0001 revisions for consistency.  
+- No technical or normative changes were made to the specification.
+
+**v1.2 — December 2025**  
+- Added normative reference to USG Reference Registry v0.1.0  
+- Updated event resolution requirements to enforce registry-based validation  
+- Minor terminology alignment with RFC 0001 v1.2
+
 
 **End of RFC 0002**

@@ -1,0 +1,11 @@
+{
+  "team_id": "nba_warriors",
+  "league_id": "nba",
+  "name": "Golden State Warriors",
+  "short_name": "Warriors",
+  "market": "San Francisco",
+  "country": "US",
+  "metadata": {
+    "usg_version_added": "0.1.0"
+  }
+}

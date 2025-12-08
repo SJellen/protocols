@@ -1,0 +1,23 @@
+{
+  "event_id": "nba_2025_gsw_lal_0410",
+  "league": "NBA",
+  "home": "Warriors",
+  "away": "Lakers",
+  "start_time": "2025-04-10T19:30:00Z",
+  "territory": ["US", "CA"],
+  "blackout": [],
+  "rights_holder": "NBA Media",
+  "delivery_partner": "YouTubeTV",
+  "price_usd": 4.99,
+  "access_window": {
+    "start": "2025-04-10T19:00:00Z",
+    "end": "2025-04-10T23:59:00Z"
+  },
+  "settlement_split": {
+    "platform": 40,
+    "rights": 40,
+    "clearinghouse": 20
+  },
+  "privacy_ref": "https://example-league.com/privacy",
+  "consent_scope": ["analytics"]
+}

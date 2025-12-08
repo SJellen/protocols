@@ -1,0 +1,15 @@
+{
+  "league_id": "nba",
+  "name": "National Basketball Association",
+  "governing_body": "NBA",
+  "region": "North America",
+  "official_site": "https://www.nba.com",
+  "status": "active",
+  "metadata": {
+    "usg_version_added": "0.1.0",
+    "notes": [
+      "Illustrative registry entry for USG sandbox.",
+      "Used as the parent league for nba_2025_gsw_lal_0410."
+    ]
+  }
+}

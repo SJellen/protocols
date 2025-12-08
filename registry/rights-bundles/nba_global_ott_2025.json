@@ -1,0 +1,17 @@
+{
+  "rights_bundle_id": "nba_global_ott_2025",
+  "league_id": "nba",
+  "description": "Illustrative OTT rights bundle for global single-game access (2025 season).",
+  "territory": ["US", "CA"],
+  "access_model": "day_pass",
+  "default_price_usd": 4.99,
+  "settlement_split": {
+    "platform": 40,
+    "rights": 40,
+    "clearinghouse": 20
+  },
+  "metadata": {
+    "usg_version_added": "0.1.0",
+    "note": "Non-normative example; bundle concept only."
+  }
+}

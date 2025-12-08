@@ -1,0 +1,11 @@
+{
+  "team_id": "nba_lakers",
+  "league_id": "nba",
+  "name": "Los Angeles Lakers",
+  "short_name": "Lakers",
+  "market": "Los Angeles",
+  "country": "US",
+  "metadata": {
+    "usg_version_added": "0.1.0"
+  }
+}

@@ -3,14 +3,17 @@
 
 **Document Series:** USG-RFC  
 **Series Number:** 0001  
-**DOI:** 10.5281/zenodo.17807503
+**DOI:** 10.5281/zenodo.17565793  
 **Updated By:** RFC 0002  
 **Author:** Scott Jellen (Independent Researcher)  
 **Date:** 2025  
 **License:** CC BY-NC-SA 4.0  
-**Status:** Standards-Track (Informational)
+**Status:** Informational (Standards-Track Profile)
 
 
+
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -72,6 +75,24 @@ Public read-only discovery endpoints (e.g., `GET /rights/{event_id}`) may be imp
 
 ---
 
+### 4.1.1 USG Reference Registry (v0.1.0)
+
+A concrete, machine-readable reference registry is published in the USG protocols
+repository at:
+
+**https://github.com/sjellen/protocols/registry**
+
+This snapshot is versioned as **USG Registry v0.1.0** and includes an illustrative
+set of JSON records for leagues, teams, venues, broadcasters, rights bundles, and
+events. The reference registry demonstrates a minimal, interoperable implementation
+of the Rights Registry Layer defined in this RFC.
+
+Deployments are not required to use this specific registry, but MUST preserve the
+identifier stability, directory semantics, and record structure defined herein.
+
+
+---
+
 ### 4.2 Access and Authentication API
 **Endpoints**
 - `POST /entitlements/issue` — request a time-limited entitlement token.  
@@ -84,7 +105,7 @@ Public read-only discovery endpoints (e.g., `GET /rights/{event_id}`) may be imp
   "user_id": "wallet_8234",
   "payment_token": "txn_5567"
 }
-````
+```
 
 **Response**
 
@@ -222,9 +243,37 @@ Until then, USG remains a public Informational RFC under the SIC charter.
 
 ---
 
-## Appendix A — Reference Implementation Stub
+## Appendix A — USG Reference Registry and Illustrative Workflow
 
-### A.1 Minimal Event Schema
+This appendix provides two things:
+
+1. A pointer to the **USG Reference Registry v0.1.0**, which contains real, machine-readable league, team, venue, broadcaster, rights-bundle, and event records.
+2. A minimal illustrative workflow showing how an entitlement token may be issued and later settled using the event defined in the registry.
+
+---
+
+### A.1 USG Reference Registry (v0.1.0)
+
+A concrete reference registry is published in the USG protocols repository at:
+
+**https://github.com/sjellen/protocols/registry**
+
+The v0.1.0 snapshot includes:
+
+- One league record (`nba`)
+- Two team records (`nba_warriors`, `nba_lakers`)
+- One venue record (`chase_center`)
+- One broadcaster record (`youtube_tv`)
+- One rights bundle (`nba_global_ott_2025`)
+- One example event record (`nba_2025_gsw_lal_0410`)
+- Machine-generated index files under `registry/_index/`
+- A registry metadata file (`registry/registry-metadata.json`)
+
+This registry is illustrative but normative in structure. Entitlement profiles defined in this RFC are expected to resolve `event_id` against an authoritative registry (local or remote) having the same semantics as the reference registry.
+
+---
+
+### A.2 Illustrative Event Record (From v0.1.0)
 
 ```json
 {
@@ -245,11 +294,16 @@ Until then, USG remains a public Informational RFC under the SIC charter.
 }
 ```
 
-### A.2 Issue Request
+This is a concrete example event record found in the USG Reference Registry v0.1.0.
+
+---
+
+### A.3 Illustrative Issue Request
 
 ```http
 POST /entitlements/issue
 Content-Type: application/json
+
 {
   "event_id": "nba_2025_gsw_lal_0410",
   "user_id": "wallet_8234",
@@ -257,7 +311,11 @@ Content-Type: application/json
 }
 ```
 
-### A.3 Response
+This example assumes the distributor is authorized for the event's territories and access window.
+
+---
+
+### A.4 Illustrative Issue Response
 
 ```json
 {
@@ -266,7 +324,9 @@ Content-Type: application/json
 }
 ```
 
-### A.4 Settlement Record
+---
+
+### A.5 Illustrative Settlement Record
 
 ```json
 {
@@ -279,7 +339,18 @@ Content-Type: application/json
 }
 ```
 
+This represents a stylized clearinghouse output matching the settlement semantics defined in this profile.
+
 ---
+
+### A.6 Purpose of This Appendix
+
+This appendix connects:
+
+- the reference registry (real data),
+- the entitlement token profile (normative behavior), and
+- the event resolution process (registry → token → settlement).
+
 
 ## Acknowledgments
 
@@ -294,6 +365,14 @@ Feedback and implementation reports may be submitted via [scottjellen.com](https
 - Removed placeholder ISSN field  
 - Updated header metadata to USG-RFC standard  
 - Minor terminology alignment with entitlement profile
+
+**v1.2 — December 2025**  
+- Added Section 4.1.1 referencing the USG Reference Registry v0.1.0  
+- Replaced placeholder Appendix A with full registry-aligned event, issue, and settlement examples  
+- Corrected code-fence formatting in Sections 4.2 and Appendix A  
+- Updated cross-references to RFC 0002 for consistency  
+- Minor clarifications to terminology (no normative protocol changes)
+
 ___
 
 **End of RFC 0001**

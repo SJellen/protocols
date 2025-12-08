@@ -1,0 +1,9 @@
+{
+  "broadcaster_id": "youtube_tv",
+  "name": "YouTube TV",
+  "type": "ott",
+  "official_site": "https://tv.youtube.com",
+  "metadata": {
+    "usg_version_added": "0.1.0"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "venue_id": "chase_center",
+  "name": "Chase Center",
+  "city": "San Francisco",
+  "country": "US",
+  "timezone": "America/Los_Angeles",
+  "metadata": {
+    "usg_version_added": "0.1.0"
+  }
+}
