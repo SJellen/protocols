@@ -25,11 +25,13 @@ All RFCs are maintained in plain-text Markdown for transparency, citation stabil
 
 ### RFC Index
 
-| Number          | Title                        | Category                       | Status |
-|-----------------|------------------------------|--------------------------------|--------|
-| RFC 0001        | Universal Sports Graph       | Informational                  | Active |
-| RFC 0002        | USG Entitlement Token Profile | Standards-Track (Experimental) | Active |
-| Registry v0.1.0 | USG Reference Registry       | Reference Artifact             | Active |
+| Number          | Title                          | Category                       | Status |
+|-----------------|--------------------------------|--------------------------------|--------|
+| RFC 0001        | Universal Sports Graph         | Informational                  | Active |
+| RFC 0002        | USG Entitlement Token Profile  | Standards-Track (Experimental) | Active |
+| RFC 0003        | USG Registry Architecture      | Standards-Track                | Active |
+| Registry v0.1.0 | USG Reference Registry         | Reference Artifact             | Pilot  |
+
 
 ---
 
@@ -53,10 +55,29 @@ Defines the token structure, required and optional claims, validation rules, sec
 
 ---
 
+
+### **RFC 0003 — USG Registry Architecture**  
+*A standards-track specification for canonical sports rights registries.*
+
+Defines the normative architecture for USG-compatible registries, including:
+- required registry object models  
+- canonical identifiers and lifecycle semantics  
+- deterministic JSON formatting and integrity digests  
+- index structures and directory layout  
+- federation, authority, and key registry rules  
+- mandatory validation requirements for implementations  
+
+RFC 0003 formalizes how registries are constructed, validated, and trusted—completing the minimum viable USG protocol stack alongside RFC 0001 and RFC 0002.
+
+- **DOI (All Versions):** https://doi.org/10.5281/zenodo.17807795  
+- **RFC Markdown:** [`/rfc/rfc-0003-usg-registry-architecture.md`](./rfc/rfc-0003-usg-registry-architecture.md)
+
+---
+
 ### **USG Reference Registry (v0.1.0)**  
 *A canonical JSON registry illustrating leagues, teams, venues, broadcasters, rights bundles, and events.*
 
-The registry defines the authoritative identifiers and metadata that USG-compatible systems MUST resolve when validating entitlements and generating settlement records.
+The registry is a reference implementation of the architecture defined in RFC 0003, providing authoritative identifiers and metadata that USG-compatible systems MUST resolve when validating entitlements and generating settlement records.
 
 - **Registry Path:** [`/registry`](./registry)  
 - **Version:** `0.1.0`  
@@ -132,7 +153,7 @@ protocols/
 ├── diagrams/ # SVG/PNG architecture diagrams
 ├── public-assets/ # Covers, metadata blocks, shared visuals
 ├── registry/ # USG Reference Registry v0.1.0
-├── LICENSE.md # CC BY-NC 4.0 license
+├── LICENSE.md # CC BY-NC-SA 4.0 license
 └── README.md # This file
 ```
 
@@ -141,10 +162,15 @@ protocols/
 
 ## License
 
-Textual content (RFCs, whitepapers, briefs) is licensed under **CC BY-NC 4.0**.
+Textual content (RFCs, whitepapers, briefs) is licensed under  
+**Creative Commons Attribution–NonCommercial–ShareAlike 4.0 (CC BY-NC-SA 4.0)**.
+
+Licensing terms may evolve as specifications mature toward implementation and adoption.
+
 
 Example schemas and sample JSON are provided for illustrative and non-commercial research use.  
-For commercial or production use, please contact the author.
+For commercial or production use, additional licensing may be required.
+
 
 ---
 
