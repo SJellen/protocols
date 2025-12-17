@@ -13,7 +13,7 @@ related:
   - type: "rfc"
     doi: "10.5281/zenodo.17565794"
     title: "RFC 0001 — Universal Sports Graph"
-license: "CC BY-NC 4.0"
+license: "CC BY 4.0"
 tags:
   - Universal Sports Graph
   - Interoperability
