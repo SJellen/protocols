@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:usg:schema:event:1.1",
+  "title": "USG Event Schema",
+  "description": "ID-first schema for a single sports event within the Universal Sports Graph registry. All cross-entity references MUST use canonical registry IDs.",
+  "type": "object",
+
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Canonical event identifier.",
+      "examples": ["nba_2025_gsw_lal_0410"]
+    },
+
+    "league_id": {
+      "type": "string",
+      "description": "Canonical league identifier (must match registry league_id).",
+      "examples": ["nba"]
+    },
+
+    "home_team_id": {
+      "type": "string",
+      "description": "Canonical team identifier for the home team.",
+      "examples": ["nba_warriors"]
+    },
+
+    "away_team_id": {
+      "type": "string",
+      "description": "Canonical team identifier for the away team.",
+      "examples": ["nba_lakers"]
+    },
+
+    "start_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Scheduled start time in UTC (ISO 8601).",
+      "examples": ["2025-04-10T19:30:00Z"]
+    },
+
+    "territory": {
+      "type": "array",
+      "description": "Allowed access territories (ISO 3166-1 alpha-2).",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{2}$"
+      },
+      "minItems": 1,
+      "examples": [["US", "CA"]]
+    },
+
+    "blackout": {
+      "type": "array",
+      "description": "Optional blackout territories.",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{2}$"
+      },
+      "default": []
+    },
+
+    "rights_holder": {
+      "type": "string",
+      "description": "Entity holding primary broadcast rights.",
+      "examples": ["NBA Media"]
+    },
+
+    "broadcaster_id": {
+      "type": "string",
+      "description": "Canonical broadcaster/distributor identifier.",
+      "examples": ["youtube_tv"]
+    },
+
+    "venue_id": {
+      "type": "string",
+      "description": "Optional canonical venue identifier.",
+      "examples": ["chase_center"]
+    },
+
+    "rights_bundle_id": {
+      "type": "string",
+      "description": "Optional canonical rights bundle identifier.",
+      "examples": ["nba_global_ott_2025"]
+    },
+
+    "price_usd": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Illustrative per-event price in USD.",
+      "examples": [4.99]
+    },
+
+    "access_window": {
+      "type": "object",
+      "description": "Time window during which access tokens are valid.",
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Access window start (UTC)."
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Access window end (UTC)."
+        }
+      },
+      "required": ["start", "end"],
+      "additionalProperties": false
+    },
+
+    "settlement_split": {
+      "type": "object",
+      "description": "Revenue allocation percentages.",
+      "properties": {
+        "platform": { "type": "number", "minimum": 0, "maximum": 100 },
+        "rights": { "type": "number", "minimum": 0, "maximum": 100 },
+        "clearinghouse": { "type": "number", "minimum": 0, "maximum": 100 }
+      },
+      "required": ["platform", "rights", "clearinghouse"],
+      "additionalProperties": false
+    },
+
+    "privacy_ref": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the applicable privacy policy."
+    },
+
+    "consent_scope": {
+      "type": "array",
+      "description": "Optional consent scopes associated with access.",
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "metadata": {
+      "type": "object",
+      "description": "Optional registry metadata.",
+      "properties": {
+        "usg_version_added": { "type": "string" },
+        "notes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+
+  "required": [
+    "event_id",
+    "league_id",
+    "home_team_id",
+    "away_team_id",
+    "start_time",
+    "territory",
+    "rights_holder",
+    "broadcaster_id",
+    "price_usd",
+    "access_window",
+    "settlement_split"
+  ],
+
+  "additionalProperties": false
+}

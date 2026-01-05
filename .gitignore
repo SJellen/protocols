@@ -17,9 +17,9 @@ yarn-error.log*
 # Auto-generated USG Registry Artifacts
 # -----------------------------------------------------------------------------
 
-# Index files — these are rebuilt by tools/validate-registry.js
-registry/_index/events.index.json
-registry/_index/leagues.index.json
+# Generated index files — rebuilt by tools/validate-registry.js
+registry/_index/
+
 
 # Registry metadata timestamps (if you allow this to be auto-updated)
 # Comment out if you want metadata committed.

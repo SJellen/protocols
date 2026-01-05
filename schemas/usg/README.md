@@ -19,13 +19,31 @@ third-party developers, researchers, and pilot environments.
 
 ## 📦 Available Schemas
 
-### **1. Event Schema**  
-**URN:** `urn:usg:schema:event:1.0`  
-**File:** `event-schema.v1.0.json`  
+### **1. Event Schema**
 
-Defines the canonical structure for a single sports event within the USG rights registry.
-Covers teams, league, start time, territories, blackout, pricing, access window, and
-settlement split configuration.
+**Registry Schema (ID-First)** 
+
+This schema is enforced by the USG registry validator and defines the required
+shape for all registry-backed event records.
+
+
+**URN:** `urn:usg:schema:event:1.1`  
+**File:** `event-schema.v1.1.json`
+
+Defines the canonical, ID-first structure for a single sports event within the USG
+reference registry. All cross-entity references (league, teams, broadcaster, venue,
+rights bundle) MUST use canonical registry identifiers.
+
+This schema is enforced by the USG registry validator and is intended for
+registry-backed implementations.
+
+**Legacy / Informational Schema**  
+**URN:** `urn:usg:schema:event:1.0`  
+**File:** `event-schema.v1.0.json`
+
+Defines an earlier, display-oriented event profile derived from Appendix A of the
+USG Blueprint. Retained for backward compatibility and documentation purposes.
+
 
 ---
 
