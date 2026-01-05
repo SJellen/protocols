@@ -16,8 +16,9 @@ All RFCs are maintained in plain-text Markdown for transparency, citation stabil
 ## 📘 Status of This Repository
 
 > **Status:** Active · Early Specification Stage  
-> All RFCs and schemas are *informational* unless otherwise noted.  
-> Examples are illustrative and non-normative.
+> RFCs may be Informational or Standards-Track as noted.  
+> Reference artifacts are illustrative in scope but **normative in structure**.
+
 
 ---
 
@@ -30,7 +31,9 @@ All RFCs are maintained in plain-text Markdown for transparency, citation stabil
 | RFC 0001        | Universal Sports Graph         | Informational                  | Active |
 | RFC 0002        | USG Entitlement Token Profile  | Standards-Track (Experimental) | Active |
 | RFC 0003        | USG Registry Architecture      | Standards-Track                | Active |
-| Registry v0.1.0 | USG Reference Registry         | Reference Artifact             | Pilot  |
+| Registry v0.1.1 | USG Reference Registry | Reference Artifact | Pilot · CI-enforced |
+
+
 
 
 ---
@@ -74,17 +77,28 @@ RFC 0003 formalizes how registries are constructed, validated, and trusted—com
 
 ---
 
-### **USG Reference Registry (v0.1.0)**  
-*A canonical JSON registry illustrating leagues, teams, venues, broadcasters, rights bundles, and events.*
+### **USG Reference Registry (v0.1.1)**  
+*A canonical, CI-validated JSON registry defining leagues, teams, venues, broadcasters, rights bundles, and events.*
 
 The registry is a reference implementation of the architecture defined in RFC 0003, providing authoritative identifiers and metadata that USG-compatible systems MUST resolve when validating entitlements and generating settlement records.
 
 - **Registry Path:** [`/registry`](./registry)  
-- **Version:** `0.1.0`  
+- **Version:** `0.1.1`  
 - **Status:** Pilot (reference implementation)  
-- **Aligns With:** RFC 0001 (Rights Registry Layer), RFC 0002 (Entitlement Token Profile)
+- **Validation:** Schema-validated and referentially enforced via CI  
+- **Aligns With:** RFC 0001 (Rights Registry Layer), RFC 0002 (Entitlement Token Profile), RFC 0003 (Registry Architecture)
+
+#### Registry Validation & CI Enforcement
+
+All registry records are validated using a schema-backed validator and checked for referential integrity.  
+Validation is enforced via GitHub Actions on every pull request and push to `main`.
+
+Invalid registry changes fail CI and are blocked from merge.
+
 
 ---
+
+
 
 Additional RFCs will be published as formal protocol designs evolve.
 
@@ -117,7 +131,10 @@ All schemas use **URN identifiers** for longevity and independence from hosting.
 
 Included:
 
-- **Event Schema** — `urn:usg:schema:event:1.0`  
+- **Event Schema** — `urn:usg:schema:event:1.1`  
+  Previous versions remain available for reference but are not validated in the current registry.
+
+
 - **Entitlement Token Schema** — `urn:usg:schema:entitlement-token:1.0`  
 - **Settlement Record Schema** — `urn:usg:schema:settlement-record:1.0`
 
@@ -146,13 +163,14 @@ URNs follow the pattern:
 
 ``` 
 protocols/
+├── .github/workflows/ # CI enforcement for registry validation
 ├── rfc/ # Formal RFC markdown documents
 ├── whitepapers/ # Markdown source versions of whitepapers
 ├── briefs/ # Strategy briefs and early conceptual memos
 ├── schemas/ # JSON schemas + sample payloads
 ├── diagrams/ # SVG/PNG architecture diagrams
 ├── public-assets/ # Covers, metadata blocks, shared visuals
-├── registry/ # USG Reference Registry v0.1.0
+├── registry/ # USG Reference Registry v0.1.1 (CI-validated)
 ├── LICENSE.md # CC BY-NC-SA 4.0 license
 └── README.md # This file
 ```
