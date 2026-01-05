@@ -1,4 +1,4 @@
-# USG Reference Registry (v0.1.0)
+# USG Reference Registry (v0.1.1)
 
 This directory contains the **reference registry** for the Universal Sports Graph (USG).
 

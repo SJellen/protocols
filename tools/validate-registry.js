@@ -497,7 +497,7 @@ function main() {
     console.error(`❌ Registry has validation errors. Total: ${totalErrors}`);
     process.exitCode = 1;
   } else {
-    console.log("🎉 Registry is consistent, schema-valid, and referentially sound (v0.2.0).");
+    console.log("🎉 Registry is consistent, schema-valid, and referentially sound (v0.1.1).");
   }
 }
 
