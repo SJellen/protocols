@@ -122,5 +122,3 @@ This ensures that the Universal Sports Graph (USG) and its related specification
 remain openly available for non-commercial use, research, adaptation, and 
 interoperability work, while requiring derivative versions to be shared under 
 the same license to preserve the integrity of the public-good standard.
-
-
