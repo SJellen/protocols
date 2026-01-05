@@ -40,3 +40,4 @@ jobs:
       - name: Validate registry and rebuild indexes
         run: npm run validate:registry
 
+
