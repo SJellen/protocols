@@ -18,6 +18,7 @@ on:
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/usg-registry-ci.yml"
+  workflow_dispatch: {}
 
 jobs:
   validate-registry:
@@ -39,4 +40,5 @@ jobs:
 
       - name: Validate registry and rebuild indexes
         run: npm run validate:registry
+
 
