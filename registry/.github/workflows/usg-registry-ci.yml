@@ -1,0 +1,42 @@
+name: USG Registry CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "registry/**"
+      - "schemas/**"
+      - "tools/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/usg-registry-ci.yml"
+  pull_request:
+    paths:
+      - "registry/**"
+      - "schemas/**"
+      - "tools/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/usg-registry-ci.yml"
+
+jobs:
+  validate-registry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate registry and rebuild indexes
+        run: npm run validate:registry
+
