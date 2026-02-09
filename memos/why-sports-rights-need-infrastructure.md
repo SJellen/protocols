@@ -1,9 +1,9 @@
 ---
-title: "Why Sports Rights Need Infrastructure"
+title: "Why Sports Rights Need Neutral Infrastructure"
 kind: "keystone-memo"
 status: "reference"
 author: "Scott Jellen"
-version: "1.0"
+version: "1.0.1"
 date: "2026-02-09"
 context: "Universal Sports Graph (USG)"
 related:
@@ -23,7 +23,10 @@ tags:
 ---
 
 
-# Why Sports Rights Need Infrastructure
+# Why Sports Rights Need Neutral Infrastructure
+
+This memo explains why recurring sports rights failures are structural rather than contractual, and why neutral representation infrastructure is a necessary precondition for coordination.
+
 
 ## The recurring failure
 
@@ -143,3 +146,7 @@ tags:
 - This phase prioritizes legibility and verification rather than adoption or deployment.
 - No claims are made regarding industry uptake, operational readiness, or timeline.
 - Any future work would occur downstream and independently of the protocol itself.
+
+
+---
+*Revision note (v1.0.1): Added a brief orienting sentence and clarified memo classification. No substantive changes.*
