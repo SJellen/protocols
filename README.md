@@ -5,6 +5,15 @@ This repository serves as the canonical source for my protocol work, RFC documen
 schemas, and reference artifacts. It functions as a public, versioned archive for  
 frameworks that define interoperable, humanity-first digital infrastructure.
 
+
+> **Context**
+>  
+> For an explanation of *why* these protocols exist and the problem they are
+> designed to address, see  
+> **`/memos/why-sports-rights-need-infrastructure.md`**.
+
+
+
 The goal:  
 **Author standards that make complex systems—sports, media, education, commerce—interoperable, portable, and governable.**
 
