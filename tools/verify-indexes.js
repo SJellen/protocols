@@ -8,7 +8,10 @@ const crypto = require("crypto");
 const assert = require("node:assert/strict");
 
 const ROOT = path.resolve(__dirname, "..");
-const REGISTRY_DIR = path.join(ROOT, "registry");
+
+const REGISTRY_DIR = process.env.USG_REGISTRY_DIR
+  ? path.resolve(process.env.USG_REGISTRY_DIR)
+  : path.join(ROOT, "registry");
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
