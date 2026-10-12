@@ -10,6 +10,7 @@ on:
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/usg-registry-ci.yml"
+      - "tests/**"
   pull_request:
     paths:
       - "registry/**"
@@ -18,6 +19,7 @@ on:
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/usg-registry-ci.yml"
+      - "tests/**"
 
 jobs:
   validate-registry:
@@ -37,6 +39,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Validate registry and rebuild indexes
-        run: npm run validate:registry
+      - name: Validate registry sources
+        run: npm run registry:check
+
+      - name: Build registry and run regression tests
+        run: npm run registry:test
+
+      - name: Verify generated indexes
+        run: npm run registry:verify
 
