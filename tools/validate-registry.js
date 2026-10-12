@@ -441,8 +441,10 @@ function main() {
     }))
     .sort((a, b) => a.rights_bundle_id.localeCompare(b.rights_bundle_id));
 
-    // Stop before writing any files if validation fails.
-  const totalErrors =
+
+
+    // Stop before generating artifacts if validation failed.
+  const validationErrors =
     leaguesRes.errorCount +
     teamsRes.errorCount +
     venuesRes.errorCount +
@@ -451,16 +453,13 @@ function main() {
     refErrorCount +
     eventsRes.errorCount;
 
-  if (totalErrors > 0) {
+  if (validationErrors > 0) {
     console.error(
-      `❌ Registry validation failed. Total errors: ${totalErrors}`
+      `❌ Registry validation failed. Total errors: ${validationErrors}`
     );
     process.exitCode = 1;
     return;
   }
-
-  // Only build mode may modify generated artifacts.
-  if (!checkOnly) {
 
   // Write index files
   writeIndexes({
