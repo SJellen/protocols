@@ -6,6 +6,7 @@
    "scripts": {
     "validate:registry": "node tools/validate-registry.js",
     "registry:check": "node tools/validate-registry.js --check",
-    "registry:build": "node tools/validate-registry.js"
+    "registry:build": "node tools/validate-registry.js",
+    "registry:verify": "node tools/verify-indexes.js"
   }
 }
