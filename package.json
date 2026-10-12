@@ -3,7 +3,9 @@
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1"
   },
-  "scripts": {
-    "validate:registry": "node tools/validate-registry.js"
+   "scripts": {
+    "validate:registry": "node tools/validate-registry.js",
+    "registry:check": "node tools/validate-registry.js --check",
+    "registry:build": "node tools/validate-registry.js"
   }
 }

@@ -326,6 +326,7 @@ function updateMetadataCounts(metadataPath, metadata, counts) {
 
 // ---------- Main runner ----------
 function main() {
+  const checkOnly = process.argv.includes("--check");
   console.log("🔍 Validating USG registry…");
 
   const { validateEvent } = loadSchemas();
@@ -440,6 +441,27 @@ function main() {
     }))
     .sort((a, b) => a.rights_bundle_id.localeCompare(b.rights_bundle_id));
 
+    // Stop before writing any files if validation fails.
+  const totalErrors =
+    leaguesRes.errorCount +
+    teamsRes.errorCount +
+    venuesRes.errorCount +
+    broadcastersRes.errorCount +
+    rightsBundlesRes.errorCount +
+    refErrorCount +
+    eventsRes.errorCount;
+
+  if (totalErrors > 0) {
+    console.error(
+      `❌ Registry validation failed. Total errors: ${totalErrors}`
+    );
+    process.exitCode = 1;
+    return;
+  }
+
+  // Only build mode may modify generated artifacts.
+  if (!checkOnly) {
+
   // Write index files
   writeIndexes({
     eventsIndex: eventsRes.eventsIndex,
@@ -470,6 +492,8 @@ function main() {
     events_files: eventsRes.filesCount,
     events_valid: eventsRes.okCount,
   });
+}
+  
 
   const dirErrors =
     leaguesRes.errorCount +
@@ -477,8 +501,6 @@ function main() {
     venuesRes.errorCount +
     broadcastersRes.errorCount +
     rightsBundlesRes.errorCount;
-
-  const totalErrors = dirErrors + refErrorCount + eventsRes.errorCount;
 
   console.log("");
   console.log("✅ Registry validation complete.");
@@ -490,15 +512,18 @@ function main() {
     `   Rights Bundles (files/valid): ${rightsBundlesRes.filesCount}/${rightsBundlesRes.okCount}`
   );
   console.log(`   Events (files/valid):         ${eventsRes.filesCount}/${eventsRes.okCount}`);
-  console.log("   Indexes rebuilt:              events, leagues, teams, venues, broadcasters, rights-bundles");
+  console.log(
+  checkOnly
+    ? "   Mode:                         read-only source validation"
+    : "   Indexes rebuilt:              events, leagues, teams, venues, broadcasters, rights-bundles"
+);
   console.log("");
 
-  if (totalErrors > 0) {
-    console.error(`❌ Registry has validation errors. Total: ${totalErrors}`);
-    process.exitCode = 1;
-  } else {
-    console.log("🎉 Registry is consistent, schema-valid, and referentially sound (v0.1.1).");
-  }
+  console.log(
+    checkOnly
+      ? "✅ Registry source validation passed. No files were modified."
+      : "🎉 Registry sources validated and generated artifacts updated (v0.1.1)."
+  );
 }
 
 main();
