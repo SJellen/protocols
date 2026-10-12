@@ -443,7 +443,9 @@ function main() {
 
 
 
-    // Stop before generating artifacts if validation failed.
+    // ---------- 7) Validation error safeguard ----------
+
+  // Stop before generating artifacts if validation failed.
   const validationErrors =
     leaguesRes.errorCount +
     teamsRes.errorCount +
@@ -461,62 +463,80 @@ function main() {
     return;
   }
 
-  // Write index files
-  writeIndexes({
-    eventsIndex: eventsRes.eventsIndex,
-    leaguesIndex,
-    teamsIndex,
-    venuesIndex,
-    broadcastersIndex,
-    rightsBundlesIndex,
-  });
+  // ---------- 8) Build mode ----------
 
-  // Update metadata counts
-  updateMetadataCounts(metadataPath, metadata, {
-    leagues_files: leaguesRes.filesCount,
-    leagues_valid: leaguesRes.okCount,
+  // Only build mode may modify generated artifacts.
+  if (!checkOnly) {
+    // Write index files
+    writeIndexes({
+      eventsIndex: eventsRes.eventsIndex,
+      leaguesIndex,
+      teamsIndex,
+      venuesIndex,
+      broadcastersIndex,
+      rightsBundlesIndex,
+    });
 
-    teams_files: teamsRes.filesCount,
-    teams_valid: teamsRes.okCount,
+    // Update metadata counts
+    updateMetadataCounts(metadataPath, metadata, {
+      leagues_files: leaguesRes.filesCount,
+      leagues_valid: leaguesRes.okCount,
 
-    venues_files: venuesRes.filesCount,
-    venues_valid: venuesRes.okCount,
+      teams_files: teamsRes.filesCount,
+      teams_valid: teamsRes.okCount,
 
-    broadcasters_files: broadcastersRes.filesCount,
-    broadcasters_valid: broadcastersRes.okCount,
+      venues_files: venuesRes.filesCount,
+      venues_valid: venuesRes.okCount,
 
-    rights_bundles_files: rightsBundlesRes.filesCount,
-    rights_bundles_valid: rightsBundlesRes.okCount,
+      broadcasters_files: broadcastersRes.filesCount,
+      broadcasters_valid: broadcastersRes.okCount,
 
-    events_files: eventsRes.filesCount,
-    events_valid: eventsRes.okCount,
-  });
-}
-  
+      rights_bundles_files: rightsBundlesRes.filesCount,
+      rights_bundles_valid: rightsBundlesRes.okCount,
 
-  const dirErrors =
-    leaguesRes.errorCount +
-    teamsRes.errorCount +
-    venuesRes.errorCount +
-    broadcastersRes.errorCount +
-    rightsBundlesRes.errorCount;
+      events_files: eventsRes.filesCount,
+      events_valid: eventsRes.okCount,
+    });
+  }
+
+  // ---------- 9) Validation summary ----------
 
   console.log("");
   console.log("✅ Registry validation complete.");
-  console.log(`   Leagues (files/valid):        ${leaguesRes.filesCount}/${leaguesRes.okCount}`);
-  console.log(`   Teams (files/valid):          ${teamsRes.filesCount}/${teamsRes.okCount}`);
-  console.log(`   Venues (files/valid):         ${venuesRes.filesCount}/${venuesRes.okCount}`);
-  console.log(`   Broadcasters (files/valid):   ${broadcastersRes.filesCount}/${broadcastersRes.okCount}`);
+
+  console.log(
+    `   Leagues (files/valid):        ${leaguesRes.filesCount}/${leaguesRes.okCount}`
+  );
+
+  console.log(
+    `   Teams (files/valid):          ${teamsRes.filesCount}/${teamsRes.okCount}`
+  );
+
+  console.log(
+    `   Venues (files/valid):         ${venuesRes.filesCount}/${venuesRes.okCount}`
+  );
+
+  console.log(
+    `   Broadcasters (files/valid):   ${broadcastersRes.filesCount}/${broadcastersRes.okCount}`
+  );
+
   console.log(
     `   Rights Bundles (files/valid): ${rightsBundlesRes.filesCount}/${rightsBundlesRes.okCount}`
   );
-  console.log(`   Events (files/valid):         ${eventsRes.filesCount}/${eventsRes.okCount}`);
+
   console.log(
-  checkOnly
-    ? "   Mode:                         read-only source validation"
-    : "   Indexes rebuilt:              events, leagues, teams, venues, broadcasters, rights-bundles"
-);
+    `   Events (files/valid):         ${eventsRes.filesCount}/${eventsRes.okCount}`
+  );
+
+  console.log(
+    checkOnly
+      ? "   Mode:                         read-only source validation"
+      : "   Indexes rebuilt:              events, leagues, teams, venues, broadcasters, rights-bundles"
+  );
+
   console.log("");
+
+  // ---------- 10) Completion ----------
 
   console.log(
     checkOnly
@@ -526,4 +546,3 @@ function main() {
 }
 
 main();
-
