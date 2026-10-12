@@ -440,6 +440,26 @@ function main() {
     }))
     .sort((a, b) => a.rights_bundle_id.localeCompare(b.rights_bundle_id));
 
+
+
+    // Stop before generating artifacts if validation failed.
+  const validationErrors =
+    leaguesRes.errorCount +
+    teamsRes.errorCount +
+    venuesRes.errorCount +
+    broadcastersRes.errorCount +
+    rightsBundlesRes.errorCount +
+    refErrorCount +
+    eventsRes.errorCount;
+
+  if (validationErrors > 0) {
+    console.error(
+      `❌ Registry validation failed. Total errors: ${validationErrors}`
+    );
+    process.exitCode = 1;
+    return;
+  }
+
   // Write index files
   writeIndexes({
     eventsIndex: eventsRes.eventsIndex,
