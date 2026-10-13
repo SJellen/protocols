@@ -26,7 +26,7 @@ All RFCs are maintained in plain-text Markdown for transparency, citation stabil
 
 > **Status:** Active · Early Specification Stage  
 > RFCs may be Informational or Standards-Track as noted.  
-> Reference artifacts are illustrative in scope but **normative in structure**.
+> Reference artifacts are illustrative implementations. Conformance to published RFCs is documented explicitly and remains partial where noted.
 
 ---
 
@@ -76,25 +76,71 @@ Defines the normative architecture for USG-compatible registries, including:
 
 RFC 0003 formalizes how registries are constructed, validated, and trusted—completing the minimum viable USG protocol stack alongside RFC 0001 and RFC 0002.
 
-- **DOI (All Versions):** https://doi.org/10.5281/zenodo.17807795  
+- **DOI (All Versions):** https://doi.org/10.5281/zenodo.17942832
 - **RFC Markdown:** [`/rfc/rfc-0003-usg-registry-architecture.md`](./rfc/rfc-0003-usg-registry-architecture.md)
 
 ---
 
-### **USG Reference Registry (v0.1.1)**  
-*A canonical, CI-validated JSON registry defining leagues, teams, venues, broadcasters, rights bundles, and events.*
+### **USG Reference Registry (v0.1.1)**
+*An illustrative JSON reference registry covering leagues, teams, venues, broadcasters, rights bundles, and events.*
 
-The registry is a reference implementation of the architecture defined in RFC 0003, providing authoritative identifiers and metadata that USG-compatible systems MUST resolve when validating entitlements and generating settlement records.
+The registry provides sample records and tooling for source validation, referential integrity, index generation, and independent index verification.
 
-- **Registry Path:** [`/registry`](./registry)  
-- **Version:** `0.1.1`  
-- **Status:** Pilot (reference implementation)  
-- **Validation:** Schema-validated and referentially enforced via CI  
-- **Aligns With:** RFC 0001, RFC 0002, RFC 0003
+This implementation supports development and testing against the USG architecture but does not yet claim full RFC 0003 conformance. Canonical object modeling, comprehensive schema coverage, lifecycle management, and federation remain under development.
+
+- **Registry Path:** [`/registry`](./registry)
+- **Version:** `0.1.1`
+- **Status:** Pilot (illustrative reference implementation)
+- **Validation:** Event schema validation, identifier and referential checks, and automated CI testing
+- **Integrity:** Generated indexes verified against source records using SHA-256 hashes and field comparisons
+- **Specification Alignment:** RFC 0001, RFC 0002, and RFC 0003 (partial implementation)
 
 ---
 
-## 🔎 Reference Implementation ⬅ NEW
+---
+
+## 🛠 Registry Development
+
+The USG reference registry includes tooling for validating source records,
+generating indexes, verifying integrity, and running automated tests.
+
+### Setup
+
+```bash
+npm ci
+```
+
+### Registry Commands
+
+| Command | Purpose |
+|---|---|
+| `npm run registry:check` | Validate registry source records without modifying files |
+| `npm run registry:build` | Validate sources and generate registry indexes |
+| `npm run registry:verify` | Verify generated indexes against their source records |
+| `npm run registry:test` | Rebuild indexes and run automated integrity regression tests |
+
+### Recommended Workflow
+
+```bash
+npm run registry:check
+npm run registry:build
+npm run registry:verify
+npm run registry:test
+```
+
+Generated indexes are development artifacts and are not committed to the repository.
+Run `registry:build` before `registry:verify` on a fresh checkout.
+
+Automated regression tests use isolated temporary registry copies to verify
+detection of corrupted fields, invalid hashes, and duplicate entries.
+
+GitHub Actions runs registry validation, testing, and verification on
+applicable changes.
+
+The current tooling supports the illustrative reference registry and
+does not constitute full RFC 0003 conformance.
+
+## 🔎 Reference Implementation
 
 The USG protocol stack includes a minimal, read-only **reference resolver** that
 demonstrates deterministic resolution of canonical USG identifiers against a
@@ -120,14 +166,19 @@ Zenodo, 2025. DOI: 10.5281/zenodo.17537287
 
 ---
 
-## 📘 Whitepapers (Source Markdown)
+## 📘 Foundational Research
 
-Markdown source files corresponding to published whitepapers are stored in `/whitepapers/`.  
-All canonical DOI-linked PDFs are available on Zenodo:
+The Universal Sports Graph originated as a DOI-backed whitepaper
+and subsequently developed into a series of technical RFCs,
+schemas, and reference implementations.
 
-🔗 https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Jellen%2C%20Scott%22
+This repository maintains the protocol specifications, registry
+artifacts, and supporting implementation tools.
 
-This repo hosts the **source layer**—the editable, version-controlled foundation for each paper.
+Published whitepapers and research are archived on Zenodo.
+
+- **USG Whitepaper:** https://doi.org/10.5281/zenodo.17537287
+- **Research Archive:** https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Jellen%2C%20Scott%22
 
 ---
 
@@ -149,16 +200,37 @@ See the full schema registry here:
 
 ## 🔢 Versioning Model
 
-Schema versions follow **semantic versioning**:
+USG specifications, schemas, registry artifacts, and reference implementations are versioned independently. A version change in one component does not automatically change the versions of the others.
 
-- `1.0` — initial public release  
-- `1.1` — non-breaking additions  
-- `2.0` — breaking structural changes  
+| Component | Current Version | Scope |
+|---|---|---|
+| RFC 0001–0003 | Independently versioned | Published protocol specifications |
+| Reference Registry | `0.1.1` | Illustrative registry dataset |
+| Generated Index Format | `0.2.0` | Structure of generated registry indexes |
+| Event Schema | `1.1` | Event record validation |
+| Entitlement Token Schema | `1.0` | Entitlement API response structure |
+| Settlement Record Schema | `1.0` | Settlement record structure |
+| Reference Resolver | `v0.1` | Independent read-only HTTP implementation |
 
-URN pattern:
+### Schema Versioning
 
+Schema identifiers use major.minor version notation, with compatibility-oriented versioning conventions:
 
-```` urn:usg:schema:<name>:<version> ````
+- `1.0` — Initial public release
+- `1.1` — Backward-compatible additions
+- `2.0` — Breaking structural changes
+
+Schema URN pattern:
+
+```text
+urn:usg:schema:<name>:<version>
+```
+
+Registry versions describe reference datasets, while index-format versions describe generated artifact structures.
+
+The reference resolver maintains its own implementation version and pinned registry snapshot. These versions are not currently synchronized with the reference registry in this repository.
+
+Full compatibility and RFC conformance must be established through validation and testing, not inferred from version numbers alone.
 
 ---
 
