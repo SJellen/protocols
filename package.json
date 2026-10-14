@@ -8,6 +8,6 @@
     "registry:check": "node tools/validate-registry.js --check",
     "registry:build": "node tools/validate-registry.js",
     "registry:verify": "node tools/verify-indexes.js",
-    "registry:test": "npm run registry:build && node --test tests/verify-indexes.test.js"
+    "registry:test": "npm run registry:build && node --test tests/*.test.js"
   }
 }
