@@ -13,7 +13,11 @@ const Ajv = require("ajv");
 const addFormats = require("ajv-formats");
 
 const ROOT = process.cwd();
-const REGISTRY_DIR = path.join(ROOT, "registry");
+
+const REGISTRY_DIR = process.env.USG_REGISTRY_DIR
+  ? path.resolve(process.env.USG_REGISTRY_DIR)
+  : path.join(ROOT, "registry");
+
 const SCHEMAS_DIR = path.join(ROOT, "schemas", "usg");
 const INDEX_DIR = path.join(REGISTRY_DIR, "_index");
 
@@ -55,17 +59,45 @@ function loadSchemas() {
   const ajv = new Ajv({ allErrors: true, strict: false });
   addFormats(ajv);
 
-  // Event schema v1.1 (ID-first)
-  const eventSchemaPath = path.join(SCHEMAS_DIR, "event-schema.v1.1.json");
-  if (!fs.existsSync(eventSchemaPath)) {
-    throw new Error(
-      `Missing event schema v1.1 at: ${eventSchemaPath}\n` +
-        `Create schemas/usg/event-schema.v1.1.json to match your ID-first event shape.`
-    );
+  const legacyPath = path.join(
+    SCHEMAS_DIR,
+    "event-schema.v1.1.json"
+  );
+
+  const canonicalPath = path.join(
+    SCHEMAS_DIR,
+    "event-schema.v2.0.json"
+  );
+
+  for (const schemaPath of [legacyPath, canonicalPath]) {
+    if (!fs.existsSync(schemaPath)) {
+      throw new Error(`Missing event schema: ${schemaPath}`);
+    }
   }
 
-  const eventSchema = readJson(eventSchemaPath);
-  const validateEvent = ajv.compile(eventSchema);
+  const validateLegacy = ajv.compile(readJson(legacyPath));
+  const validateCanonical = ajv.compile(readJson(canonicalPath));
+
+  function validateEvent(event) {
+    const canonicalFields = ["type", "id", "version", "meta"];
+
+    const isCanonicalAttempt =
+      event !== null &&
+      typeof event === "object" &&
+      canonicalFields.some((field) =>
+        Object.prototype.hasOwnProperty.call(event, field)
+      );
+
+    const validator = isCanonicalAttempt
+      ? validateCanonical
+      : validateLegacy;
+
+    const valid = validator(event);
+
+    validateEvent.errors = validator.errors;
+
+    return valid;
+  }
 
   return { validateEvent };
 }
